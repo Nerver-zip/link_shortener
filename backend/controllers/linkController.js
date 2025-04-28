@@ -7,7 +7,7 @@ const shortenUrl = async (originalUrl) => {
   try {
     const savedLink = await link.save(); 
     console.log('Link salvo no banco de dados:', savedLink);  
-    return shortened;  // Retorna a URL encurtada
+    return shortened; 
   } catch (error) {
     console.error('Erro ao salvar o link:', error); 
     throw error;

@@ -19,7 +19,7 @@ router.get('/api/links/:shortenedUrl', async (req, res) => {
   try {
     const originalUrl = await redirectLink(shortenedUrl);
     if (originalUrl) {
-      return res.redirect(originalUrl);  // Redireciona para a URL original
+      return res.redirect(originalUrl);
     } else {
       console.log('Link não encontrado no banco de dados');
       return res.status(404).json({ message: 'Link não encontrado' });

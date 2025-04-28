@@ -24,9 +24,9 @@ app.use('/api/links', linkRoutes);
 app.get('/:shortenedUrl', async (req, res) => {
   const { shortenedUrl } = req.params;
   try {
-    const originalUrl = await redirectLink(shortenedUrl);  // Chamando a função de redirecionamento
+    const originalUrl = await redirectLink(shortenedUrl);
     if (originalUrl) {
-      return res.redirect(originalUrl);  // Redireciona para a URL original
+      return res.redirect(originalUrl); 
     } else {
       console.log('Link não encontrado no banco de dados');
       return res.status(404).json({ message: 'Link não encontrado' });

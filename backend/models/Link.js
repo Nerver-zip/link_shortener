@@ -8,9 +8,10 @@ const linkSchema = new mongoose.Schema({
   shortenedUrl: {
     type: String,
     required: true,
-  },
+    unique: true,
+  }
 });
 
-const Link = mongoose.model('Link', linkSchema, 'links');  // Especificando a coleção 'links'
+linkSchema.index({ shortenedUrl: 1 }, { unique: true });
 
-module.exports = Link;
+module.exports = mongoose.model('Link', linkSchema);

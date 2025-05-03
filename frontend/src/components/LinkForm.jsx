@@ -11,9 +11,7 @@ const LinkForm = () => {
 
     try {
       const response = await axios.post('http://localhost:5000/api/links/shorten', { originalUrl });
-
       const { shortenedUrl } = response.data;
-
       setShortenedUrl(shortenedUrl);
     } catch (error) {
       console.error('Erro ao criar link encurtado:', error);
@@ -46,7 +44,7 @@ const LinkForm = () => {
       </form>
 
       {shortenedUrl && (
-        <div className="shortened-link">
+        <div className="shortened-link fade-in" key={shortenedUrl}>
           <p>Link encurtado!</p>
           <button onClick={copyToClipboard}>Copiar</button>
         </div>

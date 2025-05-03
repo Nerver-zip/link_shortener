@@ -4,11 +4,10 @@
   box-sizing: border-box;
 }
 
-
 body {
   font-family: 'Arial', sans-serif;
-  background-color: #333; /* Fundo cinza escuro */
-  color: white; /* Cor do texto branca */
+  background-color: #333;
+  color: white;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -116,6 +115,21 @@ button:hover {
   justify-content: center;
   text-align: center;
   max-width: 100%;
+}
+
+.fade-in {
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media (max-width: 600px) {

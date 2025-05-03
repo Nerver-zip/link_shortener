@@ -3,7 +3,7 @@ const dotenv = require('dotenv');
 const cors = require('cors');
 const connectDB = require('./config/db');
 const linkRoutes = require('./routes/linkRoutes');
-const { redirectLink } = require('./controllers/linkController'); 
+const { redirectToOriginalUrl } = require('./controllers/linkController'); 
 
 dotenv.config();
 
@@ -23,9 +23,12 @@ app.use('/api/links', linkRoutes);
 
 app.get('/:shortenedUrl', async (req, res) => {
   const { shortenedUrl } = req.params;
+
   try {
-    const originalUrl = await redirectLink(shortenedUrl);
+    const originalUrl = await redirectToOriginalUrl(shortenedUrl);
+
     if (originalUrl) {
+      // Redireciona para a URL original
       return res.redirect(originalUrl); 
     } else {
       console.log('Link não encontrado no banco de dados');
